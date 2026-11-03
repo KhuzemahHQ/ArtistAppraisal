@@ -8,7 +8,12 @@ Interactive Streamlit Web Demo for ArtistAppraisal:
 """
 
 import json
+import os
 from pathlib import Path
+
+# Prevent joblib/loky on Windows 11 24H2+ from calling removed `wmic.exe`
+os.environ.setdefault("LOKY_MAX_CPU_COUNT", str(max(1, (os.cpu_count() or 4) // 2)))
+os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS_WARNING", "1")
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -17,6 +22,9 @@ import streamlit as st
 import torch
 import torch.nn.functional as F
 from PIL import Image
+
+# Prevent Streamlit's file watcher from crashing when inspecting PyTorch C++ custom classes
+torch.classes.__path__ = []
 
 from src.model import ArtistStyleNet, get_transforms
 from src.style_features import (

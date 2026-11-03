@@ -12,7 +12,11 @@ Answers: "Can a DNN predict an artist from a painting, and is artistic style imp
 """
 
 import json
+import os
 from pathlib import Path
+
+# Prevent joblib/loky on Windows 11 24H2+ from invoking removed `wmic.exe`
+os.environ.setdefault("LOKY_MAX_CPU_COUNT", str(max(1, (os.cpu_count() or 4) // 2)))
 
 import matplotlib
 matplotlib.use("Agg")

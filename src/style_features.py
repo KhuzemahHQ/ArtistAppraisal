@@ -7,9 +7,14 @@ Style feature extraction and visual attribution utilities:
    regions/brushstrokes of a painting drive the DNN's artist prediction.
 """
 
+import os
 from typing import Dict, List, Tuple
 
-import matplotlib.cm as cm
+# Prevent joblib/loky on Windows 11 24H2+ from invoking removed `wmic.exe` and printing a traceback warning
+# (Must be strictly less than os.cpu_count() due to joblib's `cpu_count_user < os_cpu_count` check)
+os.environ.setdefault("LOKY_MAX_CPU_COUNT", str(max(1, (os.cpu_count() or 4) // 2)))
+
+import matplotlib
 import numpy as np
 import torch
 import torch.nn as nn
@@ -210,7 +215,7 @@ def overlay_gradcam_on_image(
     )
     heatmap_resized = np.asarray(heatmap_img, dtype=np.float32) / 255.0
 
-    colormap = cm.get_cmap("jet")
+    colormap = matplotlib.colormaps["jet"]
     colored_heatmap = colormap(heatmap_resized)[:, :, :3]  # (H, W, 3) in [0, 1]
 
     orig_np = np.asarray(img_rgb, dtype=np.float32) / 255.0

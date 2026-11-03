@@ -13,6 +13,9 @@ import random
 from pathlib import Path
 from collections import Counter
 
+os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS_WARNING", "1")
+os.environ.setdefault("LOKY_MAX_CPU_COUNT", str(max(1, (os.cpu_count() or 4) // 2)))
+
 import pandas as pd
 import pyarrow.parquet as pq
 from huggingface_hub import hf_hub_download
