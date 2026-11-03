@@ -1,0 +1,29 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Downloaded raw painting images (re-created automatically by `src/data_fetcher.py`)
+data/paintings/
+
+# Large model weight checkpoints and binary embedding caches
+outputs/*.pt
+outputs/*.pth
+outputs/*.ckpt
+outputs/*.npz
+
+# Keep lightweight evaluation figures and JSON summaries tracked in `outputs/`
+!outputs/*.png
+!outputs/*.json
+
+# OS / IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.streamlit/

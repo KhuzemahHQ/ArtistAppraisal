@@ -1,0 +1,110 @@
+[
+  {
+    "epoch": 1,
+    "train_loss": 1.718,
+    "train_top1_acc": 0.4744,
+    "val_loss": 1.3945,
+    "val_top1_acc": 0.6789,
+    "val_top3_acc": 0.8842,
+    "elapsed_sec": 17.74
+  },
+  {
+    "epoch": 2,
+    "train_loss": 1.0268,
+    "train_top1_acc": 0.7725,
+    "val_loss": 1.1495,
+    "val_top1_acc": 0.6895,
+    "val_top3_acc": 0.9474,
+    "elapsed_sec": 15.7
+  },
+  {
+    "epoch": 3,
+    "train_loss": 0.7617,
+    "train_top1_acc": 0.8817,
+    "val_loss": 0.9682,
+    "val_top1_acc": 0.7842,
+    "val_top3_acc": 0.9579,
+    "elapsed_sec": 20.96
+  },
+  {
+    "epoch": 4,
+    "train_loss": 0.634,
+    "train_top1_acc": 0.9386,
+    "val_loss": 0.9799,
+    "val_top1_acc": 0.7895,
+    "val_top3_acc": 0.9368,
+    "elapsed_sec": 19.11
+  },
+  {
+    "epoch": 5,
+    "train_loss": 0.5707,
+    "train_top1_acc": 0.9681,
+    "val_loss": 0.9335,
+    "val_top1_acc": 0.7947,
+    "val_top3_acc": 0.9421,
+    "elapsed_sec": 18.7
+  },
+  {
+    "epoch": 6,
+    "train_loss": 0.5509,
+    "train_top1_acc": 0.9761,
+    "val_loss": 0.8776,
+    "val_top1_acc": 0.8263,
+    "val_top3_acc": 0.9579,
+    "elapsed_sec": 19.44
+  },
+  {
+    "epoch": 7,
+    "train_loss": 0.5325,
+    "train_top1_acc": 0.9829,
+    "val_loss": 0.8707,
+    "val_top1_acc": 0.8105,
+    "val_top3_acc": 0.9895,
+    "elapsed_sec": 18.77
+  },
+  {
+    "epoch": 8,
+    "train_loss": 0.5088,
+    "train_top1_acc": 0.9954,
+    "val_loss": 0.857,
+    "val_top1_acc": 0.8316,
+    "val_top3_acc": 0.9737,
+    "elapsed_sec": 18.27
+  },
+  {
+    "epoch": 9,
+    "train_loss": 0.4927,
+    "train_top1_acc": 0.9966,
+    "val_loss": 0.8601,
+    "val_top1_acc": 0.8158,
+    "val_top3_acc": 0.9789,
+    "elapsed_sec": 19.63
+  },
+  {
+    "epoch": 10,
+    "train_loss": 0.5026,
+    "train_top1_acc": 0.9909,
+    "val_loss": 0.8423,
+    "val_top1_acc": 0.8368,
+    "val_top3_acc": 0.9737,
+    "elapsed_sec": 20.01
+  },
+  {
+    "epoch": 11,
+    "train_loss": 0.4945,
+    "train_top1_acc": 0.9954,
+    "val_loss": 0.8316,
+    "val_top1_acc": 0.8579,
+    "val_top3_acc": 0.9632,
+    "elapsed_sec": 19.82
+  },
+  {
+    "epoch": 12,
+    "train_loss": 0.4917,
+    "train_top1_acc": 0.9909,
+    "val_loss": 0.829,
+    "val_top1_acc": 0.8579,
+    "val_top3_acc": 0.9789,
+    "elapsed_sec": 19.36
+  }
+]

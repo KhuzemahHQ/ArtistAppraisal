@@ -1,0 +1,26 @@
+{
+  "artist_to_idx": {
+    "Albrecht Durer": 0,
+    "Claude Monet": 1,
+    "John Singer Sargent": 2,
+    "Marc Chagall": 3,
+    "Pablo Picasso": 4,
+    "Paul Gauguin": 5,
+    "Pierre-Auguste Renoir": 6,
+    "Rembrandt": 7,
+    "Salvador Dali": 8,
+    "Vincent van Gogh": 9
+  },
+  "idx_to_artist": {
+    "0": "Albrecht Durer",
+    "1": "Claude Monet",
+    "2": "John Singer Sargent",
+    "3": "Marc Chagall",
+    "4": "Pablo Picasso",
+    "5": "Paul Gauguin",
+    "6": "Pierre-Auguste Renoir",
+    "7": "Rembrandt",
+    "8": "Salvador Dali",
+    "9": "Vincent van Gogh"
+  }
+}

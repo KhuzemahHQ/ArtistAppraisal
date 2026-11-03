@@ -1,0 +1,271 @@
+{
+  "num_artists": 10,
+  "total_paintings": 1255,
+  "test_paintings": 186,
+  "test_top1_acc": 0.7849,
+  "test_top3_acc": 0.9462,
+  "test_macro_f1": 0.7845,
+  "probe_comparison": [
+    {
+      "representation": "Random Guess Baseline",
+      "dims": 0,
+      "top1_acc": 0.1,
+      "top3_acc": 0.3,
+      "description": "Uniform random guessing across the 10 artists"
+    },
+    {
+      "representation": "Handcrafted Palette + Brushstroke Edges",
+      "dims": 64,
+      "top1_acc": 0.4355,
+      "top3_acc": 0.7527,
+      "description": "HSV color histograms + luminance contrast + Sobel edge orientation entropy"
+    },
+    {
+      "representation": "Raw Gatys Gram Matrices (Texture Only)",
+      "dims": 900,
+      "top1_acc": 0.672,
+      "top3_acc": 0.8925,
+      "description": "Spatial-invariant CNN feature correlations (layer1\u20133) with all object layout averaged out"
+    },
+    {
+      "representation": "Learned Gram Texture Stream",
+      "dims": 128,
+      "top1_acc": 0.6935,
+      "top3_acc": 0.9355,
+      "description": "Fine-tuned multi-scale Gram matrix projection head (pure brushwork/texture)"
+    },
+    {
+      "representation": "Full ArtistStyleNet (Gram + Semantic Fusion)",
+      "dims": 256,
+      "top1_acc": 0.7849,
+      "top3_acc": 0.9462,
+      "description": "End-to-end hybrid DNN combining multi-scale Gram brushwork & deep compositional features"
+    }
+  ],
+  "per_artist": [
+    {
+      "artist": "Albrecht Durer",
+      "precision": 0.8333,
+      "recall_top1": 0.8333,
+      "top3_acc": 0.9444,
+      "f1_score": 0.8333,
+      "support": 18,
+      "most_confused_with": "Marc Chagall"
+    },
+    {
+      "artist": "Claude Monet",
+      "precision": 0.8947,
+      "recall_top1": 0.8947,
+      "top3_acc": 0.9474,
+      "f1_score": 0.8947,
+      "support": 19,
+      "most_confused_with": "John Singer Sargent"
+    },
+    {
+      "artist": "John Singer Sargent",
+      "precision": 0.8,
+      "recall_top1": 0.8421,
+      "top3_acc": 1.0,
+      "f1_score": 0.8205,
+      "support": 19,
+      "most_confused_with": "Marc Chagall"
+    },
+    {
+      "artist": "Marc Chagall",
+      "precision": 0.7778,
+      "recall_top1": 0.7368,
+      "top3_acc": 0.8947,
+      "f1_score": 0.7568,
+      "support": 19,
+      "most_confused_with": "Salvador Dali"
+    },
+    {
+      "artist": "Pablo Picasso",
+      "precision": 0.6667,
+      "recall_top1": 0.6316,
+      "top3_acc": 0.8421,
+      "f1_score": 0.6486,
+      "support": 19,
+      "most_confused_with": "Paul Gauguin"
+    },
+    {
+      "artist": "Paul Gauguin",
+      "precision": 0.6842,
+      "recall_top1": 0.6842,
+      "top3_acc": 0.9474,
+      "f1_score": 0.6842,
+      "support": 19,
+      "most_confused_with": "Pablo Picasso"
+    },
+    {
+      "artist": "Pierre-Auguste Renoir",
+      "precision": 0.8333,
+      "recall_top1": 0.8333,
+      "top3_acc": 1.0,
+      "f1_score": 0.8333,
+      "support": 18,
+      "most_confused_with": "John Singer Sargent"
+    },
+    {
+      "artist": "Rembrandt",
+      "precision": 0.9444,
+      "recall_top1": 0.8947,
+      "top3_acc": 1.0,
+      "f1_score": 0.9189,
+      "support": 19,
+      "most_confused_with": "Albrecht Durer"
+    },
+    {
+      "artist": "Salvador Dali",
+      "precision": 0.75,
+      "recall_top1": 0.7895,
+      "top3_acc": 0.9474,
+      "f1_score": 0.7692,
+      "support": 19,
+      "most_confused_with": "Pablo Picasso"
+    },
+    {
+      "artist": "Vincent van Gogh",
+      "precision": 0.6667,
+      "recall_top1": 0.7059,
+      "top3_acc": 0.9412,
+      "f1_score": 0.6857,
+      "support": 17,
+      "most_confused_with": "Albrecht Durer"
+    }
+  ],
+  "artist_names": [
+    "Albrecht Durer",
+    "Claude Monet",
+    "John Singer Sargent",
+    "Marc Chagall",
+    "Pablo Picasso",
+    "Paul Gauguin",
+    "Pierre-Auguste Renoir",
+    "Rembrandt",
+    "Salvador Dali",
+    "Vincent van Gogh"
+  ],
+  "confusion_matrix": [
+    [
+      15,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1
+    ],
+    [
+      0,
+      17,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      16,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      14,
+      0,
+      1,
+      0,
+      0,
+      2,
+      2
+    ],
+    [
+      1,
+      0,
+      1,
+      0,
+      12,
+      3,
+      0,
+      0,
+      0,
+      2
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      3,
+      13,
+      1,
+      0,
+      1,
+      1
+    ],
+    [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      15,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      17,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      1,
+      2,
+      0,
+      0,
+      0,
+      15,
+      0
+    ],
+    [
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      12
+    ]
+  ]
+}
