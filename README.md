@@ -14,14 +14,14 @@ On the held-out test set (**186 unseen paintings** across 10 artists: *Albrecht 
 | :--- | :---: | :---: | :---: | :--- |
 | **1. Random Guess Baseline** | — | 10.0% | 30.0% | Uniform random guessing across 10 artists |
 | **2. Handcrafted Palette + Brushstroke Edges** | 64-D | 43.5% | 75.3% | HSV color histograms, luminance contrast, Sobel edge orientation entropy |
-| **3. Raw Gatys Gram Matrices (`layer1`–`layer3`)** | 900-D | **67.2%** | **89.2%** | **100% spatial-invariant** CNN feature correlations ($G^l_{ij} = \frac{1}{HW}\sum_{h,w} F^l_{i,h,w}F^l_{j,h,w}$) — all object positions averaged out |
-| **4. Learned Gram Texture Stream** | 128-D | **69.4%** | **93.5%** | Fine-tuned multi-scale Gram projection head (pure brushwork/texture) |
-| **5. Full `ArtistStyleNet` (Gram + Semantic Fusion)** | 256-D | **78.5%** | **94.6%** | End-to-end hybrid DNN combining multi-scale Gram brushwork & compositional features |
+| **3. Raw Gatys Gram Matrices (`layer1`–`layer3`)** | 900-D | **69.9%** | **90.3%** | **100% spatial-invariant** CNN feature correlations ($G^l_{ij} = \frac{1}{HW}\sum_{h,w} F^l_{i,h,w}F^l_{j,h,w}$) — all object positions averaged out |
+| **4. Learned Gram Texture Stream** | 128-D | **70.4%** | **94.1%** | Fine-tuned multi-scale Gram projection head (pure brushwork/texture) |
+| **5. Full `ArtistStyleNet` (Gram + Semantic Fusion)** | 256-D | **79.0%** | **94.6%** | End-to-end hybrid DNN combining multi-scale Gram brushwork & compositional features |
 
 ![Style Probe Comparison](outputs/style_probe_comparison.png)
 
 ### What This Proves About Implicit Style Learning
-1. **Pure Texture & Brushwork Account for ~88% of the DNN's Predictive Power**: Even when we completely destroy spatial layout by averaging feature cross-correlations over all $(h, w)$ positions via **Gatys Gram Matrices** (`layer1`, `layer2`, `layer3`), a linear probe achieves **69.4% Top-1** and **93.5% Top-3 accuracy**—nearly matching the full network's **78.5% Top-1 / 94.6% Top-3**.
+1. **Pure Texture & Brushwork Account for ~89% of the DNN's Predictive Power**: Even when we completely destroy spatial layout by averaging feature cross-correlations over all $(h, w)$ positions via **Gatys Gram Matrices** (`layer1`, `layer2`, `layer3`), a linear probe achieves **70.4% Top-1** and **94.1% Top-3 accuracy**—nearly matching the full network's **79.0% Top-1 / 94.6% Top-3**.
 2. **Coherent Style Manifold Without Movement Supervision**: Without ever being given labels for *Impressionism*, *Baroque Chiaroscuro*, *Surrealism*, or *Northern Renaissance*, the learned 256-D style embedding—and even the 128-D spatial-invariant Gram texture stream—clusters artists and movements into tight neighborhoods.
 
 ![t-SNE Style Manifold](outputs/style_tsne.png)
@@ -38,16 +38,16 @@ Grad-CAM overlays on `layer4` show that the network focuses on **characteristic 
 
 | Artist | Primary Art Movement | Precision | Top-1 Recall | Top-3 Recall | F1-Score | Most Frequent Stylistic Confusion |
 | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
-| **Rembrandt** | Baroque | **94.4%** | **89.5%** | **100.0%** | **0.919** | Albrecht Dürer |
-| **Claude Monet** | Impressionism | **89.5%** | **89.5%** | **94.7%** | **0.895** | John Singer Sargent / Renoir |
-| **Albrecht Dürer** | Northern Renaissance | **83.3%** | **83.3%** | **94.4%** | **0.833** | Marc Chagall |
-| **Pierre-Auguste Renoir** | Impressionism | **83.3%** | **83.3%** | **100.0%** | **0.833** | John Singer Sargent |
-| **John Singer Sargent** | Realism / Impressionism | **80.0%** | **84.2%** | **100.0%** | **0.821** | Marc Chagall |
-| **Salvador Dalí** | Surrealism | **75.0%** | **78.9%** | **94.7%** | **0.769** | Pablo Picasso |
-| **Marc Chagall** | Modernism / Naïve Art | **77.8%** | **73.7%** | **89.5%** | **0.757** | Salvador Dalí |
-| **Vincent van Gogh** | Post-Impressionism | **66.7%** | **70.6%** | **94.1%** | **0.686** | Albrecht Dürer |
-| **Paul Gauguin** | Post-Impressionism / Synthetism | **68.4%** | **68.4%** | **94.7%** | **0.684** | Pablo Picasso |
-| **Pablo Picasso** | Cubism / Post-Impressionism | **66.7%** | **63.2%** | **84.2%** | **0.649** | Paul Gauguin |
+| **Rembrandt** | Baroque | **90.0%** | **94.7%** | **100.0%** | **0.923** | John Singer Sargent |
+| **Claude Monet** | Impressionism | **89.5%** | **89.5%** | **94.7%** | **0.895** | Albrecht Dürer / Renoir |
+| **Salvador Dalí** | Surrealism | **84.2%** | **84.2%** | **94.7%** | **0.842** | Pablo Picasso |
+| **Pierre-Auguste Renoir** | Impressionism | **87.5%** | **77.8%** | **100.0%** | **0.824** | John Singer Sargent |
+| **Albrecht Dürer** | Northern Renaissance | **82.4%** | **77.8%** | **94.4%** | **0.800** | Marc Chagall |
+| **John Singer Sargent** | Realism / Impressionism | **78.9%** | **78.9%** | **100.0%** | **0.789** | Paul Gauguin |
+| **Marc Chagall** | Modernism / Naïve Art | **81.3%** | **68.4%** | **84.2%** | **0.743** | Paul Gauguin |
+| **Paul Gauguin** | Post-Impressionism / Synthetism | **65.2%** | **78.9%** | **94.7%** | **0.714** | Pablo Picasso |
+| **Pablo Picasso** | Cubism / Post-Impressionism | **75.0%** | **63.2%** | **89.5%** | **0.686** | Marc Chagall |
+| **Vincent van Gogh** | Post-Impressionism | **61.9%** | **76.5%** | **94.1%** | **0.684** | Paul Gauguin |
 
 ![Confusion Matrix](outputs/confusion_matrix.png)
 
